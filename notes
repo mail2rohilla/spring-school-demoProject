@@ -1,0 +1,4 @@
+# render json responses from controller :
+    jackson, download all the jars com.fasterxml.jackson.core.jackson-annotations.   , com.fasterxml.jackson.core.jackson-core , com.fasterxml.jackson.jackson-databind                                          -         -
+    add @RestController in place of @Controller
+
