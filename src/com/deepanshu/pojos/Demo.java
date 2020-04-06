@@ -5,12 +5,24 @@ public class Demo {
     int b;
     int c;
     int d;
+    Demo1 demoVar;
 
-    public Demo(int a, int b, int c, int d) {
+    public Demo() {}
+
+    public void setDemoVar(Demo1 demoVar) {
+        this.demoVar = demoVar;
+    }
+
+    public Demo1 getDemoVar() {
+        return demoVar;
+    }
+
+    public Demo(int a, int b, int c, int d, Demo1 dem) {
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
+        this.demoVar = dem;
     }
 
     public void setA(int a) {
