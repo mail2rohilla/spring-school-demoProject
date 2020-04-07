@@ -44,7 +44,7 @@ public class HelloController {
             JSONObject obj = new JSONObject(jb.toString());
 
             ObjectMapper om = new ObjectMapper();
-            om.readValue(obj.get("demoVar").toString(), Demo1.class);
+            Demo1 dem = (Demo1)om.readValue(obj.get("demoVar").toString(), Demo1.class);
 
         }catch(JSONException ex){
             System.out.println("exception occured while parssing");
@@ -68,3 +68,6 @@ public class HelloController {
 
 //  TODO : make a generic JSON parser from request body
 //  TODO : make a generic utility method for object mapping
+//  TODO : make a filter for all the api's
+//  TODO : make this project in groovy
+//  TODO : make project auto build and deploy on change in the project

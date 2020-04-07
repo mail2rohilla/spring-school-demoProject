@@ -2,3 +2,4 @@
     jackson, download all the jars com.fasterxml.jackson.core.jackson-annotations.   , com.fasterxml.jackson.core.jackson-core , com.fasterxml.jackson.jackson-databind                                          -         -
     add @RestController in place of @Controller
 
+for groovy with spring boot, place all groovy jars in the classPath, not working with alternate libraries
