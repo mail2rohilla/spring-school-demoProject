@@ -23,10 +23,11 @@ import java.io.InputStreamReader;
 
 @RestController
 @RequestMapping("/controllerMapGroovy")
-public class HelloControllerGroovy {
+public class HelloControllerGroovy extends JSONController{
 
     @RequestMapping(value = "/helloGroovy", method = RequestMethod.POST)
     public def demoFunc(HttpServletRequest request) {
+        def JSON = getJSON(request);
         def dem;
         StringBuffer jb = new StringBuffer();
         String line = null;
