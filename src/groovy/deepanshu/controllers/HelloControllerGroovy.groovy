@@ -58,13 +58,3 @@ public class HelloControllerGroovy {
         return dem;
     }
 }
-
-
-
-/*
-//  TODO : make a generic JSON parser from request body
-//  TODO : make a generic utility method for object mapping
-//  TODO : make a filter for all the api's
-//  TODO : make this project in groovy
-//  TODO : make project auto build and deploy on change in the project
-*/

@@ -28,7 +28,7 @@ public class HelloController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.POST)
     public Demo demoFunc(HttpServletRequest request){
-
+        Demo1 dem = null;
 //        System.out.println(demo);
         StringBuffer jb = new StringBuffer();
         String line = null;
@@ -44,7 +44,7 @@ public class HelloController {
             JSONObject obj = new JSONObject(jb.toString());
 
             ObjectMapper om = new ObjectMapper();
-            Demo1 dem = (Demo1)om.readValue(obj.get("demoVar").toString(), Demo1.class);
+            dem = (Demo1)om.readValue(obj.get("demoVar").toString(), Demo1.class);
 
         }catch(JSONException ex){
             System.out.println("exception occured while parssing");
@@ -56,7 +56,7 @@ public class HelloController {
             e.printStackTrace();
         }
 
-        return new Demo(1,2,3,4, new Demo1(3,4,5));
+        return new Demo(1,2,3,4, dem);
     }
 }
 
