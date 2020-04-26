@@ -3,3 +3,23 @@
     add @RestController in place of @Controller
 
 for groovy with spring boot, place all groovy jars in the classPath, not working with alternate libraries
+
+
+################### dependencies required for hibernate use in this project ######################################
+/home/deepanshu/Documents/spring/web/lib/byte-buddy-1.10.9.jar
+/home/deepanshu/Documents/spring/web/lib/c3p0-0.9.5.2.jar
+/home/deepanshu/Documents/spring/web/lib/c3p0-oracle-thin-extras-0.9.5.jar
+/home/deepanshu/Documents/spring/web/lib/classmate-1.5.1.jar
+/home/deepanshu/Documents/spring/web/lib/dom4j-2.1.1.jar
+/home/deepanshu/Documents/spring/web/lib/hibernate-3.2.5.ga.jar
+/home/deepanshu/Documents/spring/web/lib/hibernate-commons-annotations-5.1.0.Final.jar
+/home/deepanshu/Documents/spring/web/lib/hibernate-core-5.4.10.Final.jar
+/home/deepanshu/Documents/spring/web/lib/javax.persistence-api-2.2.jar
+/home/deepanshu/Documents/spring/web/lib/jboss-logging-3.4.1.Final.jar
+/home/deepanshu/Documents/spring/web/lib/jta-1.1.jar
+/home/deepanshu/Documents/spring/web/lib/mchange-commons-java-0.2.11.jar
+/home/deepanshu/Documents/spring/web/lib/mysql-connector-java-8.0.19.jar
+/home/deepanshu/Documents/spring/web/lib/spring-jdbc-5.2.5.RELEASE.jar
+/home/deepanshu/Documents/spring/web/lib/spring-orm-5.2.5.RELEASE.jar
+
+# always use getters and setters in the entity classes

@@ -1,4 +1,4 @@
-package deepanshu.filters
+package com.quiz.filters
 
 import com.deepanshu.pojos.Demo1
 import com.fasterxml.jackson.core.JsonParseException

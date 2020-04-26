@@ -28,7 +28,7 @@
 
     <filter>
         <filter-name>f1</filter-name>
-        <filter-class>deepanshu.filters.MyHttpFilter</filter-class>
+        <filter-class>com.quiz.filters.MyHttpFilter</filter-class>
     </filter>
 
     <filter-mapping>

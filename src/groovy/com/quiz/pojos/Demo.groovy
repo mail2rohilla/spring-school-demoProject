@@ -1,4 +1,4 @@
-package deepanshu.pojos
+package com.quiz.pojos
 
 public class Demo {
     int a;

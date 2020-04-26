@@ -60,11 +60,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.codehaus.jackson</groupId>-->
+<!--			<artifactId>jackson-mapper-asl</artifactId>-->
+<!--			<version>1.9.13</version>-->
+<!--		</dependency>-->
 
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
@@ -153,6 +153,11 @@
 			<version>5.2.5.RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework</groupId>-->
+<!--			<artifactId>spring-hibernate3</artifactId>-->
+<!--			<version>2.0.8</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
@@ -178,8 +183,158 @@
 			<version>5.2.5.RELEASE</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>hibernate-core</artifactId>-->
+<!--			<version>5.4.10.Final</version>-->
+<!--		</dependency>-->
 
 
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.19</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/c3p0/c3p0 -->
+<!--		<dependency>-->
+<!--			<groupId>c3p0</groupId>-->
+<!--			<artifactId>c3p0</artifactId>-->
+<!--			<version>0.9.0.4</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>com.mchange</groupId>-->
+<!--			<artifactId>c3p0</artifactId>-->
+<!--			<version>0.9.5.2</version>-->
+<!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>2.2.6.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-pool/commons-pool -->
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.1-RC2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate</groupId>-->
+<!--			<artifactId>hibernate-c3p0</artifactId>-->
+<!--			<version>5.4.10.Final</version>-->
+<!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/com.mchange/mchange-commons-java -->
+<!--		<dependency>-->
+<!--			<groupId>com.mchange</groupId>-->
+<!--			<artifactId>mchange-commons-java</artifactId>-->
+<!--			<version>0.2.20</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>com.google.code.maven-play-plugin.com.mchange</groupId>-->
+<!--			<artifactId>c3p0-oracle-thin-extras</artifactId>-->
+<!--			<version>0.9.5</version>-->
+<!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-configuration2 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-configuration2</artifactId>
+			<version>2.7</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.2.5.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework</groupId>-->
+<!--			<artifactId>spring-orm</artifactId>-->
+<!--			<version>5.2.5.RELEASE</version>-->
+<!--		</dependency>-->
+
+
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/javax.servlet.jsp.jstl-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate.javax.persistence</groupId>-->
+<!--			<artifactId>hibernate-jpa-2.1-api</artifactId>-->
+<!--			<version>1.0.2.Final</version>-->
+<!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging -->
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.4.1.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.transaction/jta -->
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy</artifactId>
+			<version>1.10.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate5</artifactId>
+			<version>2.9.8</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/antlr/antlr -->
+<!--		<dependency>-->
+<!--			<groupId>antlr</groupId>-->
+<!--			<artifactId>antlr</artifactId>-->
+<!--			<version>2.7.7</version>-->
+<!--		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/org.antlr/antlr-runtime -->
+<!--		<dependency>-->
+<!--			<groupId>org.antlr</groupId>-->
+<!--			<artifactId>antlr-runtime</artifactId>-->
+<!--			<version>3.5.2</version>-->
+<!--		</dependency>-->
 
 
 	</dependencies>
