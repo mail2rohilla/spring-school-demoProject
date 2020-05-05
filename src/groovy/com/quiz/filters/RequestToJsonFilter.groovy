@@ -1,11 +1,9 @@
 package com.quiz.filters
 
 import com.deepanshu.pojos.Demo1
-import com.fasterxml.jackson.core.JsonParseException
-import com.fasterxml.jackson.databind.JsonMappingException
-import com.fasterxml.jackson.databind.ObjectMapper
 import org.json.JSONException
 import org.json.JSONObject
+import org.springframework.boot.json.JsonParseException
 
 import javax.servlet.Filter
 import javax.servlet.FilterChain
@@ -14,7 +12,7 @@ import javax.servlet.ServletException
 import javax.servlet.ServletRequest
 import javax.servlet.ServletResponse
 
-class MyHttpFilter implements Filter{
+class RequestToJsonFilter implements Filter{
     @Override
     void init(FilterConfig filterConfig) throws ServletException {
         println "filter initiated for intercepting requests and responses"
@@ -41,8 +39,6 @@ class MyHttpFilter implements Filter{
             }catch(JSONException ex){
                 System.out.println("exception occured while parssing");
             } catch (JsonParseException e) {
-                e.printStackTrace();
-            } catch (JsonMappingException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();

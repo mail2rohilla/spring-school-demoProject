@@ -3,12 +3,9 @@ package com.deepanshu.controllers;
 import com.deepanshu.pojos.Demo;
 import com.deepanshu.pojos.Demo1;
 import com.deepanshu.pojos.Demo2;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.HTTP;
-import org.json.JSONException;
-import org.json.JSONObject;
+//import org.json.HTTP;
+//import org.json.JSONException;
+//import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,21 +37,21 @@ public class HelloController {
         } catch (Exception e) { /*report an error*/
             System.out.println(e);}
         System.out.println("deepu " + jb.toString());
-        try{
-            JSONObject obj = new JSONObject(jb.toString());
-
-            ObjectMapper om = new ObjectMapper();
-            dem = (Demo1)om.readValue(obj.get("demoVar").toString(), Demo1.class);
-
-        }catch(JSONException ex){
-            System.out.println("exception occured while parssing");
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try{
+//            JSONObject obj = new JSONObject(jb.toString());
+//
+//            ObjectMapper om = new ObjectMapper();
+//            dem = (Demo1)om.readValue(obj.get("demoVar").toString(), Demo1.class);
+//
+//        }catch(JSONException ex){
+//            System.out.println("exception occured while parssing");
+//        } catch (JsonParseException e) {
+//            e.printStackTrace();
+//        } catch (JsonMappingException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         return new Demo(1,2,3,4, dem);
     }

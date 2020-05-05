@@ -1,8 +1,8 @@
 package com.quiz.controllers
 
+import com.deepanshu.entity.School
 import com.deepanshu.pojos.Demo1
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.hibernate.Query
 import org.hibernate.Session
@@ -10,6 +10,11 @@ import org.hibernate.SessionFactory
 import org.json.JSONException;
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.json.JsonParseException
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*
 
@@ -19,7 +24,6 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping("/controllerMapGroovy")
 public class HelloControllerGroovy extends JSONController{
 
-
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -27,6 +31,30 @@ public class HelloControllerGroovy extends JSONController{
         String name;
         String classRoom;
         String date;
+
+//        String getName() {
+//            return name
+//        }
+//
+//        void setName(String name) {
+//            this.name = name
+//        }
+//
+//        String getClassRoom() {
+//            return classRoom
+//        }
+//
+//        void setClassRoom(String classRoom) {
+//            this.classRoom = classRoom
+//        }
+//
+//        String getDate() {
+//            return date
+//        }
+//
+//        void setDate(String date) {
+//            this.date = date
+//        }
 
         Student(String name, String classRoom, String date) {
             this.name = name
@@ -71,10 +99,9 @@ public class HelloControllerGroovy extends JSONController{
 
     @RequestMapping(value = "/helloHibernate", method = RequestMethod.POST)
     @Transactional
-    @ResponseBody
     public def hibernateWithSpring(@RequestParam Integer id, HttpServletRequest request){
 
-        def JSON=getJSON(request);
+        def JSON = getJSON(request);
         Session session;
         List list;
         com.deepanshu.entity.Student student;
@@ -91,6 +118,9 @@ public class HelloControllerGroovy extends JSONController{
             // commit transaction
 //            session.getTransaction().commit();
 
+            def School sc = new School();
+            sc.setSchoolName("air force school");
+//            session.save(sc);
             System.out.println("Done!");
         }
         catch(Exception e){
