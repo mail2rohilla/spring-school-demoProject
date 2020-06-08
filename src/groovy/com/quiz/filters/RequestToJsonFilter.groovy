@@ -1,6 +1,7 @@
 package com.quiz.filters
 
-import com.deepanshu.pojos.Demo1
+
+import com.deepanshu.utility.UtilityJsonObject
 import org.json.JSONException
 import org.json.JSONObject
 import org.springframework.boot.json.JsonParseException
@@ -35,7 +36,7 @@ class RequestToJsonFilter implements Filter{
 
         if(jb.toString()){
             try{
-                jsonObject = new JSONObject(jb.toString());
+                jsonObject = new UtilityJsonObject(jb.toString());
             }catch(JSONException ex){
                 System.out.println("exception occured while parssing");
             } catch (JsonParseException e) {

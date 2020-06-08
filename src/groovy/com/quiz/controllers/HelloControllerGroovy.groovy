@@ -1,7 +1,7 @@
 package com.quiz.controllers
 
 import com.deepanshu.entity.School
-import com.deepanshu.pojos.Demo1
+
 import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.hibernate.Query
@@ -11,10 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.json.JsonParseException
-import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
-import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*
 
@@ -80,7 +76,6 @@ public class HelloControllerGroovy extends JSONController{
             JSONObject obj = new JSONObject(jb.toString());
 
             ObjectMapper om = new ObjectMapper();
-             dem = (Demo1)om.readValue(obj.get("demoVar").toString(), Demo1.class);
 
         }catch(JSONException ex){
             System.out.println("exception occured while parssing");
@@ -93,7 +88,6 @@ public class HelloControllerGroovy extends JSONController{
         }
 
         Student st = new Student("deepanshu", "12", "12-23-3444")
-        def temp = new com.deepanshu.pojos.Demo(1,2,3,4, new Demo1(3,4,5))
         return st;
     }
 
@@ -124,7 +118,7 @@ public class HelloControllerGroovy extends JSONController{
             System.out.println("Done!");
         }
         catch(Exception e){
-            print("deepanshuu exception "+ e.getMessage());
+            print("deepanshu exception "+ e.getMessage());
         }
         finally {
 
@@ -134,4 +128,53 @@ public class HelloControllerGroovy extends JSONController{
 //        return (com.deepanshu.entity.Student)student;
         return list;
     }
+
+
+    @RequestMapping(value = "/createEntities", method = RequestMethod.POST)
+    @Transactional
+    public def createEntities(HttpServletRequest request){
+        def JSON = getJSON(request);
+        if (JSON?.school){
+            School sc = objectMapper.readValue(JSON?.school?.toString(), School.class);
+            def metaData = sc.metaData;
+            metaData.put("rabriKulfi", "roohafza wali rabri");
+            metaData.put("matkaKulfi", "kasooti matka kulfi");
+            def schoolSaved = createSchool(sc);
+            print("deepanshu print school save" +  schoolSaved);
+        }else if(JSON.student){
+            com.deepanshu.entity.Student st = objectMapper.readValue(JSON?.student?.toString(), com.deepanshu.entity.Student.class);
+            Session session  = sessionFactory.getCurrentSession();
+            School school = session.get( School.class, JSON.studentSchool);
+            st.setSchoolOne(school);
+            def studentSaved = createStudent(st);
+            print("deepanshu print student save" +  studentSaved);
+
+        }
+        Session session  = sessionFactory.getCurrentSession();
+        School sc = session.get(School.class, JSON.studentSchool);
+        print("deepanshu  "  + sc?.id);
+        this.createSchool(sc);
+    }
+
+    @Transactional
+    public def createSchool(School school){
+        Session session = sessionFactory.getCurrentSession();
+        return session.save(school);
+    }
+
+    @Transactional
+    public def createStudent(com.deepanshu.entity.Student st){
+        Session session = sessionFactory.getCurrentSession();
+        return session.save(st);
+    }
 }
+
+
+
+
+// todo : turn meta-data into blobs ,use lazy loading for their fetch, create a separate table for meta
+// todo : use meta data from parent class inheritance so that boilerPlate code is not used again
+// todo : make a generator for uuid generation, don't use self made methods
+// todo : use json data type at databse layer,
+// todo : look for a dataype in jpa that supports json in sql
+// todo : lazy loading in all the many-one relations

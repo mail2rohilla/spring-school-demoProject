@@ -23,3 +23,5 @@ for groovy with spring boot, place all groovy jars in the classPath, not working
 /home/deepanshu/Documents/spring/web/lib/spring-orm-5.2.5.RELEASE.jar
 
 # always use getters and setters in the entity classes
+
+

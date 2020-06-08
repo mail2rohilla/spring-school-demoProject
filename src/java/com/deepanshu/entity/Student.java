@@ -1,5 +1,7 @@
 package com.deepanshu.entity;
 
+import com.deepanshu.utility.UtilityMethods;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,26 +10,43 @@ import java.io.Serializable;
 @Table(name = "student")
 public class Student implements Serializable{
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
-        private int id;
+        Student(){
+                setId(null);
+        }
 
-        @Column(name = "first_name")
+        @Id
+        @Column(name = "id")
+        private String id;
+
+        @Column(name = "firstName")
         private String fname;
 
-        @Column(name = "last_name")
+        @Column(name = "lastName")
         private String lname;
 
         @Column(name = "email")
         private String email;
 
-        // add new field for instructor (also add getter/setters)
+        @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+        @JoinColumn(name="school")
+        private School schoolOne;
 
-        // add @OneToOne annotation
 
+        public String getId() {
+                return id;
+        }
+
+        public void setId(String id) {
+                if(this.id == null){
+                        this.id = UtilityMethods.UUIDGenerator();
+                }else{
+                        this.id = id;
+                }
+        }
 
         public String getFname() {
+                System.out.println("deepanshu in the getter " + fname);
                 return fname;
         }
 
@@ -51,5 +70,12 @@ public class Student implements Serializable{
                 this.email = email;
         }
 
+        public School getSchoolOne() {
+                return schoolOne;
+        }
+
+        public void setSchoolOne(School schoolOne) {
+                this.schoolOne = schoolOne;
+        }
 }
 
