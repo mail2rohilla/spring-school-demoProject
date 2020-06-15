@@ -3,7 +3,7 @@ create database studyApp;
 use studyApp;
 
 create table user(
-	id varchar(128),
+	id varchar(32),
     firstName varchar(128) not null,
     lastName varchar(128) not null,
     middleName varchar(64),
@@ -27,7 +27,7 @@ create table user(
 -- a questionnaire can only be deleted if no responses have been submitted for it--;
 
 create table questionnaire(
-	id varchar(128),
+	id varchar(32),
     name varchar(1000) not null,
     subject varchar(128),
     type varchar(128),
@@ -43,7 +43,7 @@ create table questionnaire(
 );
 
 create table response(
-	id varchar(128),
+	id varchar(32),
     performer varchar(128) not null,
     questionnaire varchar(128) not null,
     description varchar(4096),
@@ -57,7 +57,7 @@ create table response(
 
 
 create table options(
-	id varchar(128),
+	id varchar(32),
     text varchar(1024) not null,
 --     type varchar(1024) not null,
     description varchar(1024) not null,
@@ -67,7 +67,7 @@ create table options(
 );
 
 create table answer(
-	id varchar(128),
+	id varchar(32),
     text varchar(1024) not null,
     `option` varchar(128) not null,
     description varchar(1024) not null,
@@ -76,10 +76,10 @@ create table answer(
 	constraint `option_answer_fk` foreign key (`option`)
     references `options` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
-    
+
 create table question(
 
-	id varchar(128),
+	id varchar(32),
     `text` varchar(2048) not null,
     questionnaire varchar(128) not null,
     `type` varchar(128) not null,
@@ -89,7 +89,7 @@ create table question(
     hint varchar(1024) ,
     repeats int default 0,
     description varchar(256),
-    author varchar(128),
+    author varchar(128) not null,
     answer varchar(128) not null,
     meta text,
     primary key (id),
@@ -127,7 +127,7 @@ create table question_option_relation(
     references `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
--- hard coded id's stored based on the categoryType 
+-- hard coded id's stored based on the categoryType
 create table bookmark(
 	category_id varchar(128) not null,
     categoryType varchar(256)not null,
@@ -135,8 +135,6 @@ create table bookmark(
     constraint `author_bookmark_fk` foreign key (`author`)
     references `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
-
-
 
 
 

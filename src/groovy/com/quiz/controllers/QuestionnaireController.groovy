@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonMappingException
 import com.quiz.daos.BasicCRUDDao
 import com.quiz.daos.QuestionnaireDao
 import com.quiz.daos.UserDao
+import org.springframework.beans.factory.BeanFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
 import org.springframework.transaction.annotation.Transactional
@@ -19,13 +20,7 @@ import javax.servlet.http.HttpServletRequest
 class QuestionnaireController extends JSONController{
 
     @Autowired
-    private QuestionnaireDao questionnaireDao;
-
-    @Autowired
-    UserDao userDao;
-
-    @Autowired
-    private Environment env;
+    private BeanFactory beanFactory;
 
 //    BasicCRUDDao<Questionnaire> basicCRUDDao;
     // create user must go though signUp flow
@@ -34,12 +29,14 @@ class QuestionnaireController extends JSONController{
 
         def JSON = getJSON(request);
 
-        User author = userDao.getUser(JSON?.authorDetails);
+        BasicCRUDDao<User> userDao = beanFactory.getBean(BasicCRUDDao.class, User.class);;
+        BasicCRUDDao<User> questionnaireDao = beanFactory.getBean(BasicCRUDDao.class, Questionnaire.class);;
+        User author = userDao.get(JSON?.authorDetails);
         Questionnaire questionnaire = objectMapper.readValue(JSON?.questionnaireDetails?.toString(), Questionnaire.class);
 
         questionnaire.setAuthor(author);
         try{
-            questionnaireDao.saveQuestionnaire(questionnaire);
+            questionnaireDao.save(questionnaire);
         } catch(Exception e){
             println "hibernateWithSpring : QuestionnaireController : exception occured : ${e.getMessage()}"
         }

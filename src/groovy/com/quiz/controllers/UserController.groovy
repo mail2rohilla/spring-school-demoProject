@@ -33,13 +33,14 @@ class UserController extends JSONController{
     public def hibernateWithSpring(HttpServletRequest request){
 
         def JSON = getJSON(request);
+        BasicCRUDDao<User> basicCRUDDaoUser= beanFactory.getBean(BasicCRUDDao.class, User.class);
 
         User user = objectMapper.readValue(JSON?.userDetails?.toString(), User.class);
-        try{
-            basicCRUDDao.save(user);
-        } catch(Exception e){
-            println "hibernateWithSpring : UserController -exception occured : ${e.getMessage()}"
-        }
+//        try{
+            basicCRUDDaoUser.save(user);
+//        } catch(Exception e){
+//            println "hibernateWithSpring : UserController -exception occured : ${e.getMessage()}"
+//        }
     }
 
     @RequestMapping(value = "/testing", method = RequestMethod.POST)
@@ -62,7 +63,11 @@ class UserController extends JSONController{
 
     /////////////////////////////////////getters and setters////////////////////////////////////////////////////
 
-    BasicCRUDDao<User> getUserBasicCRUDDao() {
+  /*
+
+    OBSOLETE CODE
+
+  BasicCRUDDao<User> getUserBasicCRUDDao() {
 
         println("depnashu printing getting basicCrud for user");
 
@@ -71,4 +76,6 @@ class UserController extends JSONController{
         else
             return BasicDaosFactory.getBasicCRUDDaoForEntity(User.class);
     }
+
+   */
 }

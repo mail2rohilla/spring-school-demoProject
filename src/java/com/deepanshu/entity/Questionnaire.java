@@ -2,6 +2,7 @@ package com.deepanshu.entity;
 
 import com.deepanshu.utility.UtilityJsonObject;
 import com.deepanshu.utility.UtilityMethods;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -27,9 +28,11 @@ public class Questionnaire extends EntityBase{
         setId(null);
     }
 
+
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
     @Id
-    @Column(name = "id")
-    @Access(AccessType.PROPERTY)
     private String id;
 
     @Access(AccessType.PROPERTY)
@@ -76,10 +79,7 @@ public class Questionnaire extends EntityBase{
     }
 
     private void setId(String id) {
-        if(id != null)
-            this.id = id;
-        else
-            this.id = UtilityMethods.UUIDGenerator();
+        this.id = id;
     }
 
     public String getName() {

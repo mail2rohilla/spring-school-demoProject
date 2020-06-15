@@ -44,22 +44,20 @@ class BasicCRUDDaoImpl<T> implements BasicCRUDDao<T>{
     void save(T obj) {
         Session session = sessionFactory.openSession();
         Transaction txn  = session.beginTransaction();
-        session.save(obj);
+        def x = session.save(obj);
         txn.commit();
-        session.flush();
+//        session.flush();
         session.close();
     }
 
     @Override
 
-//    REQ1
-//    REQ2
     T get(String theId) {
         Session session = sessionFactory.openSession();
         Transaction txn  = session.beginTransaction();
         T data =  session.get(this.memberClass , theId);
-//        txn.commit();
         session.flush();
+        txn.commit();
         session.close();
 
         return data;

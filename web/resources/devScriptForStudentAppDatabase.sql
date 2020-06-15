@@ -3,7 +3,7 @@ create database studyApp;
 use studyApp;
 
 create table user(
-	id varchar(128),
+	id CHAR(36),
     firstName varchar(128) not null,
     lastName varchar(128) not null,
     middleName varchar(64),

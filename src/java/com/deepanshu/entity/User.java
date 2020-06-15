@@ -2,6 +2,7 @@ package com.deepanshu.entity;
 
 import com.deepanshu.utility.UtilityJsonObject;
 import com.deepanshu.utility.UtilityMethods;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -10,11 +11,12 @@ import javax.persistence.*;
 public class User extends EntityBase{
 
     public User() {
-        setId(null);
     }
 
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @Column(columnDefinition = "CHAR(32)")
     @Id
-    @Access(AccessType.PROPERTY)
     private String id;
 
     @Access(AccessType.PROPERTY)
@@ -82,11 +84,8 @@ public class User extends EntityBase{
         return id;
     }
 
-    private void setId(String id) {
-        if(id != null)
+    private void String(String id) {
             this.id = id;
-        else
-            this.id = UtilityMethods.UUIDGenerator();
     }
 
     public String getFirstName() {
