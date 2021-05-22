@@ -3,7 +3,7 @@ create database studyApp;
 use studyApp;
 
 create table user(
-	id CHAR(36),
+	id varchar(32),
     firstName varchar(128) not null,
     lastName varchar(128) not null,
     middleName varchar(64),
@@ -27,13 +27,13 @@ create table user(
 -- a questionnaire can only be deleted if no responses have been submitted for it--;
 
 create table questionnaire(
-	id varchar(128),
+	id varchar(32),
     name varchar(1000) not null,
     subject varchar(128),
     type varchar(128),
     identifier varchar(64),
     description varchar(4096),
-    author varchar(128) not null,
+    author varchar(32) not null,
     meta text,
     totalScore varchar (32),
     unique (name, author, subject),
@@ -43,9 +43,9 @@ create table questionnaire(
 );
 
 create table response(
-	id varchar(128),
-    performer varchar(128) not null,
-    questionnaire varchar(128) not null,
+	id varchar(32),
+    performer varchar(32) not null,
+    questionnaire varchar(32) not null,
     description varchar(4096),
     score varchar(32),
     primary key (id),
@@ -57,7 +57,7 @@ create table response(
 
 
 create table options(
-	id varchar(128),
+	id varchar(32),
     text varchar(1024) not null,
 --     type varchar(1024) not null,
     description varchar(1024) not null,
@@ -67,9 +67,9 @@ create table options(
 );
 
 create table answer(
-	id varchar(128),
+	id varchar(32),
     text varchar(1024) not null,
-    `option` varchar(128) not null,
+    `option` varchar(32) not null,
     description varchar(1024) not null,
     primary key (id),
 	unique (`option`),
@@ -79,9 +79,9 @@ create table answer(
     
 create table question(
 
-	id varchar(128),
+	id varchar(32),
     `text` varchar(2048) not null,
-    questionnaire varchar(128) not null,
+    questionnaire varchar(32) not null,
     `type` varchar(128) not null,
     sequenceNumber int not null default 0,
     status varchar(256),
@@ -89,8 +89,8 @@ create table question(
     hint varchar(1024) ,
     repeats int default 0,
     description varchar(256),
-    author varchar(128) not null,
-    answer varchar(128) not null,
+    author varchar(32) not null,
+    answer varchar(32) not null,
     meta text,
     primary key (id),
     constraint `author_question_fk` foreign key (`author`)
@@ -103,9 +103,9 @@ create table question(
 );
 
 create table responseAnswer(
-	response varchar(128) not null,
-    question varchar(128)  not null,
-    optionSelected varchar(128) not null,
+	response varchar(32) not null,
+    question varchar(32) not null,
+    optionSelected varchar(32) not null,
     meta text,
     constraint `response_responseAnswer_fk` foreign key (`response`)
     references `response` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -119,8 +119,8 @@ create table responseAnswer(
 
 
 create table question_option_relation(
-	option_id varchar(128),
-    question_id varchar(128),
+	option_id varchar(32),
+    question_id varchar(32),
     constraint `option_question_option_relation_fk` foreign key (`option_id`)
     references `options` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
     constraint `question_question_option_relation_fk` foreign key (`question_id`)
@@ -131,7 +131,7 @@ create table question_option_relation(
 create table bookmark(
 	category_id varchar(128) not null,
     categoryType varchar(256)not null,
-    author varchar(128) not null,
+    author varchar(32) not null,
     constraint `author_bookmark_fk` foreign key (`author`)
     references `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

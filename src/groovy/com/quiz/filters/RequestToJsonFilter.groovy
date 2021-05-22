@@ -49,9 +49,11 @@ class RequestToJsonFilter implements Filter{
         servletRequest?.request?.notes?.JSON = jsonObject;
 
         println "servletRequest is ${servletRequest}"
-        println "resposne is ${servletResponse}"
 
         filterChain.doFilter(servletRequest, servletResponse);
+
+        println "resposne is ${servletResponse}"
+
     }
 
     @Override

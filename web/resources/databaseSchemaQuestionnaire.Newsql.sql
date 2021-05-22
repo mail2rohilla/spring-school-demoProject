@@ -56,41 +56,40 @@ create table response(
 );
 
 
-create table options(
+create table `optionValue`(
 	id varchar(32),
-    text varchar(1024) not null,
---     type varchar(1024) not null,
-    description varchar(1024) not null,
-    meta varchar(4096) not null,
+    `text` varchar(1024) not null,
+    type varchar(1024) not null,
+    description varchar(1024),
+    meta text,
     primary key (id),
     unique (text)
 );
 
 create table answer(
 	id varchar(32),
-    text varchar(1024) not null,
-    `option` varchar(32) not null,
+    `text` varchar(1024) not null,
+    `optionValue` varchar(32) not null,
     description varchar(1024) not null,
     primary key (id),
-	unique (`option`),
-	constraint `option_answer_fk` foreign key (`option`)
-    references `options` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+	unique (`optionValue`),
+	constraint `optionValue_answer_fk` foreign key (`optionValue`)
+    references `optionValue` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
 
 create table question(
 
 	id varchar(32),
     `text` varchar(2048) not null,
-    questionnaire varchar(32) not null,
+    questionnaire varchar(32),
     `type` varchar(128) not null,
-    sequenceNumber int not null default 0,
     status varchar(256),
     required boolean default false,
     hint varchar(1024) ,
     repeats int default 0,
     description varchar(256),
     author varchar(32) not null,
-    answer varchar(32) not null,
+    answer varchar(32),
     meta text,
     primary key (id),
     constraint `author_question_fk` foreign key (`author`)
@@ -112,7 +111,7 @@ create table responseAnswer(
     constraint `question_responseAnswer_fk` foreign key (`question`)
     references `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
     constraint `optionSelected_responseAnswer_fk` foreign key (`optionSelected`)
-    references `options` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    references `optionValue` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
     unique (response, question)
 );
 
@@ -122,7 +121,7 @@ create table question_option_relation(
 	option_id varchar(32),
     question_id varchar(32),
     constraint `option_question_option_relation_fk` foreign key (`option_id`)
-    references `options` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    references `optionValue` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
     constraint `question_question_option_relation_fk` foreign key (`question_id`)
     references `question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 );

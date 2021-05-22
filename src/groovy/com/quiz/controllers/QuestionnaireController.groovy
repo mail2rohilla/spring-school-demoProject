@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.JsonMappingException
 import com.quiz.daos.BasicCRUDDao
 import com.quiz.daos.QuestionnaireDao
 import com.quiz.daos.UserDao
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import org.springframework.beans.factory.BeanFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.env.Environment
@@ -19,13 +21,17 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping(value = "/questionnaire")
 class QuestionnaireController extends JSONController{
 
+    QuestionnaireController(){
+        super(QuestionnaireController.class);
+    }
+
     @Autowired
     private BeanFactory beanFactory;
 
 //    BasicCRUDDao<Questionnaire> basicCRUDDao;
     // create user must go though signUp flow
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public def hibernateWithSpring(HttpServletRequest request){
+    public def questionnaireCreate(HttpServletRequest request){
 
         def JSON = getJSON(request);
 

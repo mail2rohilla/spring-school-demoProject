@@ -27,6 +27,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,9 @@ public class ApplicationConfig  implements WebMvcConfigurer {
     Environment environment;
 
     public static void main(String[] args) {
-        SpringApplication.run(ApplicationConfig.class, args);
+        SpringApplication app = new SpringApplication(ApplicationConfig.class);
+        app.setDefaultProperties(Collections.singletonMap("server.port", "8083"));
+        app.run(args);
     }
     public void configureMessageConverters(List<HttpMessageConverter<?>> messageConverters) {
         System.out.println("deepnashu adding converters");
